@@ -40,11 +40,12 @@ A check on each PR adds `needs-info` when the verification section is missing, a
 
 ## Release builds
 
-Every branch push runs the Release workflow and publishes a GitHub prerelease tagged
-`build-<commit SHA>` after all builds succeed. Installers, Windows portable archives
-and remote server binaries are attached directly to the release, not uploaded as
-Actions artifacts. Signing secrets are optional; without the updater signing key,
-the workflow builds unsigned installers without updater artifacts.
+Every branch push runs the Release workflow, builds only Windows x64, and publishes a
+GitHub prerelease tagged `build-<commit SHA>` after the build succeeds. Installers and
+portable archives are attached directly to the release, not uploaded as Actions
+artifacts. Remote server binaries and official plugin packages are not built by this
+workflow. Signing secrets are optional; without the updater signing key, the workflow
+builds unsigned installers without updater artifacts.
 
 Push a `v*` tag matching the app version for a versioned release. The Release workflow
 can also run manually: leave `tag` empty to build the selected branch, or enter an
